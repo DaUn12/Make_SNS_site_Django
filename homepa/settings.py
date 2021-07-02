@@ -13,10 +13,10 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent       # 'Path(__fill__).resolve : settings.py 의 경로 // parent : 파일의 부모노드
 
 env_list =dict()
-local_env = open(os.path.join(BASE_DIR,'.env'), encoding='utf-8')
+local_env = open(os.path.join(BASE_DIR, '.env'), encoding='utf-8')      #os.path.join : os의 경로(settings의 파일과 .env 파일의 경로)를 합침
 
 while True:
     line = local_env.readline()
