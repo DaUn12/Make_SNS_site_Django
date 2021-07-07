@@ -132,6 +132,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",            # base_dir : 최상의 폴더 안에있는 static 파일을 찾아 경로로 들인다는 말임
+]           # 정적파일 관련한 값이므로 여기다가 django static 에 들어가 복사한걸 붙여놓ㅇㅁ
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
