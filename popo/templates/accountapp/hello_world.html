@@ -2,28 +2,36 @@
 {% extends 'bbase.html' %}
 
 {% block content %}
-    <style>
-        .testing{
-            background-color: yellow;
-            margin: 1rem;
-            width : 48px;
-            height: 48px;
-            border-radius: .5rem;
-            display: inline-block;
-        }
-    </style>
+{#    <style>#}
+{#        .testing{#}
+{#            background-color: yellow;#}
+{#            margin: 1rem;#}
+{#            width : 48px;#}
+{#            height: 48px;#}
+{#            border-radius: .5rem;#}
+{#            display: inline-block;#}
+{#        }#}
+{#    </style>#}
 
 
-    <div style="height: 10rem; background-color: aqua; margin: 2rem; border-radius: 1rem; font-size: 2rem">
-        <h1> Test</h1>
+{#    <div style="height: 10rem; background-color: aqua; margin: 2rem; border-radius: 1rem; font-size: 2rem">#}
+    <div style="margin: 2rem; text-align : center">
+        <h1> http method</h1>
+
+        <form action="/accounts/hello_world/" method ="POST">
+            {% csrf_token %}
+            <input type = "submit" class ="btn btn-outline-dark rounded-pill px-5">
+        </form>
+        <h3> {{ text }}</h3>
+    </div>
 
 {#    <div class = "testing" style = "display: block"> block </div>#}
 {#    <div class = "testing" style = "display: inline"> inline </div>#}
 {#    <div class = "testing" style = "display: none"> none </div>#}
-    <div class = "testing" style = "height: 3rem; width :3rem"> </div>
+{#    <div class = "testing" style = "height: 3rem; width :3rem"> </div>#}
     {# 너비와 폭을가진 박스 처럼나옴 #}
-        <div class="testing"></div> {# 빈박스 #}
-    </div>
-
+{#        <div class="testing"></div> {# 빈박스 #}
+{#    </div>#}
+{##}
 
 {% endblock %}

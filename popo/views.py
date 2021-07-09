@@ -3,8 +3,13 @@ from django.shortcuts import render
 
 # Create your views here.
 def hello_world(request):
-    return render(request,'accountapp/hello_world.html')
 
+    if request.method =='POST':
+        return render(request,'accountapp/hello_world.html'
+                      ,context={'text ': 'POST METHOD!'})
+    else:
+        return render(request,'accountapp/hello_world.html'
+                      , context={'text': 'POST GET!'})
 
 # accountapp = popo 라고 보자 하고 그 안에 hello_world를 넣는 것 #}
 
