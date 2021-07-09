@@ -18,11 +18,15 @@
     <div style="margin: 2rem; text-align : center">
         <h1> http method</h1>
 
-        <form action="/accounts/hello_world/" method ="POST">
+        <form action="/accountss/hello_world/" method ="POST">
             {% csrf_token %}
-            <input type = "submit" class ="btn btn-outline-dark rounded-pill px-5">
+
+            <input type="text" name ="input_text">
+            <input type = "submit"
+                   value = 'Send'
+                   class ="btn btn-outline-dark rounded-pill px-5">
         </form>
-        <h3> {{ text }}</h3>
+        <h3> {{ new_model.text }}</h3>
     </div>
 
 {#    <div class = "testing" style = "display: block"> block </div>#}
