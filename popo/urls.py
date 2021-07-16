@@ -12,7 +12,7 @@ urlpatterns = [
     path('create/', AccountCreateView.as_view(), name='create'),
     #path ( 라우팅할 경로, 함수이름(클래스 시 : 클래스.as_view), 사용할 이름)
 
-    path('login/', LoginView.as_view(template_name= 'accountapp/login.html'),
+    path('login/', LoginView.as_view(template_name= 'accountapp/login.html'),   # 경로
                                      name='login')
 
 

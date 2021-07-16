@@ -53,6 +53,7 @@ class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
     success_url = reverse_lazy('popo:hello_world')
+    # lazy ( urls파일에서의 appname : 우리가 정한 경로 )
 
     template_name = 'accountapp/create.html'
-    # 여기로 저장한 다는 뜻임
+    # 여기로 저장한 다는 뜻임 ( 경로 )

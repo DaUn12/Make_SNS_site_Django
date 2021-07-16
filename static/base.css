@@ -13,3 +13,10 @@
 .pragmatic_footer_logo{
     margin: 1.5rem 0; font-family: 'Anton', sans-serif;
 }
+
+/* 회원가입, 로그인창에 있는 박스 페딩과 폭을 조정 */
+.mw-500{
+    padding: 1rem 1.5rem;
+    max-width: 500px;
+
+}
