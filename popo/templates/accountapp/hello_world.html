@@ -1,38 +1,48 @@
 
-{% extends 'bbase.html' %}
+{% extends 'bbase.html' %}      {# 다 만들어논 base.html 파일을 가져옴 #}
 
 {% block content %}
-{#    <style>#}
+{#    <style> {#style 로 쓰면 css 구문 처럼 이용할 수 있음, 너비와 높이를 지정#}
 {#        .testing{#}
 {#            background-color: yellow;#}
-{#            margin: 1rem;#}
-{#            width : 48px;#}
+{#            margin:  1rem;#}
+{#            width: 40px;#}
 {#            height: 48px;#}
-{#            border-radius: .5rem;#}
-{#            display: inline-block;#}
+{#            border-radius: .5rem;   {#.5 = 0.5#}
+{#            display: inline-block#}
 {#        }#}
+
 {#    </style>#}
 
+{#    <div style="height: 10rem; background-color: aqua; margin: 2rem; border-radius: 1rem; font-size: 2rem">  {# 마진 : 여유공간 //border-radius : 모서리 둥글게하는 정도#}
+{#     overflow : scroll   -> 다 나오는데 스크롤 형식으로 되어있음 #}
+{#     overflow : hidden  -> 넘치는 것은 안보이게 하기#}
+{#        <h1>Test</h1>#}
 
-{#    <div style="height: 10rem; background-color: aqua; margin: 2rem; border-radius: 1rem; font-size: 2rem">#}
     <div style="margin: 2rem; text-align : center">
         <h1> http method</h1>
 
-        <form action="/accountss/hello_world/" method ="POST">
-            {% csrf_token %}
+        <form action="/accountss/hello_world/" method ="POST">  {# 어느 주소로 보낼지, post 메소드로 보냄#}
+            {% csrf_token %}            {# csrf 해킹 위험을 방지하기 위해 #}
 
-            <input type="text" name ="input_text">
+
+            <input type="text" name ="input_text">      {# 서버로 보내줌 #}
+                {# input type="text" : 텍스트 창이 생김 #}
             <input type = "submit"
                    value = 'Send'
                    class ="btn btn-outline-dark rounded-pill px-5">
+{# input type : 버튼이 하나 생김 // rounded-pill : 버튼 모서리 둥굴게 // px-5 : 내부 좌우 여백 늘리기(숫자는1~5) // mt-3 : 마진 탑 3늘리기 #}
+{# value : 버튼 이름을 바꿀때  #}
         </form>
 
         {% for data in data_list %}
+            {# data_list에서 모든 데이터를 뽑음#}{# 그전에 입력했던 내용들도 다 나옴 #}
         <h3> {{ data.text }}</h3>
         {% endfor %}
 
     </div>
 
+{# block 은 부모의 속성에 따라 달라짐#}
 {#    <div class = "testing" style = "display: block"> block </div>#}
 {#    <div class = "testing" style = "display: inline"> inline </div>#}
 {#    <div class = "testing" style = "display: none"> none </div>#}
@@ -41,5 +51,7 @@
 {#        <div class="testing"></div> {# 빈박스 #}
 {#    </div>#}
 {##}
+    {#제일 상단의 기본 rem 은 16 rem#}
+    {# 블럭을 많이 넣으면 #}
 
 {% endblock %}

@@ -1,21 +1,25 @@
 {% extends 'bbase.html' %}
-{% load bootstrap4 %}
+{% load bootstrap4 %}   {# 부트스트랩을 회원가입 창에다 쓰겠다는 이야기 #}
 
 {% block content %}
 
-    <div class = "text-center mw-500 m-auto">
+    <div class = "text-center mw-500 m-auto">   {#부트스트랩에서 제공하는 텍스트 중앙 정렬 #}
+        {# base.css 파일에서 mw-500 을 불러옴, m-auto : 부트스트랩안에있는 자동정렬 #}
         <div class="m-5">
             <h4> Sign up</h4>
         </div>
         <div>
 {# 'popo:create'라는 말은 popo-urls의 'appname : name'를 이용하여 역추적하는것 이므로 urls 확인!! #}
             <form action="{% url 'popo:create' %}" method="post">
+                {#어느 주소로 요청을 보낼건지 써야하는데 안쓰고 url 을 씀#}
+
                 {%  csrf_token %}
                 {% bootstrap_form form %}
-{#                {{ form }}#}
+{#                {{ form }} 대신 부트스트랩 씀#}
                 <div>
                     <input type="submit"
                            class="btn btn-dark rounded-pill px-5">
+                    {#트리거해줄 버튼을 생성 // 부트스트랩에서 서식을 따옴 #}
                 </div>
 
 
