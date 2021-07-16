@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from popo.models import NewModel
 
@@ -17,7 +17,7 @@ def hello_world(request):
 
         if request.method == 'POST':
             temp = request.POST.get('input_text')
-            #  요청정보가 request 로 들어가므로 // input_text 를 불러옴
+                #  요청정보가 request 로 들어가므로 // input_text 를 불러옴
 
             new_model = NewModel()
             new_model.text = temp
@@ -57,3 +57,8 @@ class AccountCreateView(CreateView):
 
     template_name = 'accountapp/create.html'
     # 여기로 저장한 다는 뜻임 ( 경로 )
+
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
