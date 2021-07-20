@@ -22,16 +22,17 @@
         </span>
 
         {% else  %}
+            <span>
+            <a href="{% url 'popo:detail' pk=user.pk %}">
+                Mypage
+            </a>
+        </span>
         <span>
             <a href="{% url 'popo:logout' %}">
                 Logout
             </a>
         </span>
-        <span>
-            <a href="{% url 'popo:detail' pk=user.pk %}">
-                Mypage
-            </a>
-        </span>
+
         {% endif %}
 
     </div>

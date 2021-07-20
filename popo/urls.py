@@ -2,7 +2,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from django.views.generic import DetailView
 
-from popo.views import hello_world, AccountCreateView, AccountDetailView, AccountUpdateView
+from popo.views import hello_world, AccountCreateView, AccountDetailView, AccountUpdateView, AccountDeleteView
 
 app_name = 'popo'
 
@@ -24,8 +24,11 @@ urlpatterns = [
     # 어떤주소로 접글할때 로직을 실행할건지 / 로직  / 라우트의 이름
     # int : pk  = 인티저 형태를 받는데 이름은 pk 이다
 
-    path('update/<int:pk>', AccountUpdateView.as_view, name ='update'),
+    path('update/<int:pk>', AccountUpdateView.as_view(), name ='update'),
     # 어떤주소로 접근할지 / 로직 / 라우트의 이름
+
+    path('delete/<int:pk>', AccountDeleteView.as_view(), name ='delete')
+
 ]
 
 
