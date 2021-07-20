@@ -13,6 +13,12 @@
         <div>
             {{ target_user.date_joined }}   {# date_joined : 언제 가입했는지 #}
         </div>
+
+        <div>
+            <a href="{% url 'popo:update' pk=target_user.pk %}">
+                Update.Info
+            </a>
+        </div>
     </div>
 
 

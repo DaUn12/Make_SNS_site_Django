@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from popo.models import NewModel
 
@@ -49,16 +49,30 @@ def hello_world(request):
 # def hi(request):
 #     return HttpResponse('Hello !!')
 
+# 클래스 선언
+# 회원가입 로직 만들기
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
     success_url = reverse_lazy('popo:hello_world')
     # lazy ( urls파일에서의 appname : 우리가 정한 경로 )
+    # 회원가입이 성공시 가야하는 url
+    # ( 함수에서 불러오는 방식 = reverse // 클래스에서 불러오는 방식 = reverse_lazy)
+    # 클래스에서 리버스 쓸때는 에러가 생김
 
     template_name = 'accountapp/create.html'
     # 여기로 저장한 다는 뜻임 ( 경로 )
 
-class AccountDetailView(DetailView):
+class AccountDetailView(DetailView):        # 장고의 디테일 뷰를 상속받는 클래스를 생성
     model = User
+    context_object_name = 'target_user'  # 상세 계정을 뽑아낼 변수를 추출
+    template_name = 'accountapp/detail.html'    # 상세정보를 할때 어떤 걸로 랜더링할지
+
+
+class AccountUpdateView(UpdateView):
+    model = User
+    form_class = UserCreationForm
     context_object_name = 'target_user'
-    template_name = 'accountapp/detail.html'
+    success_url = reverse_lazy('popo:hello_wordl')
+
+    template_name = 'accountapp/update.html'
