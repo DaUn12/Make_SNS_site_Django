@@ -135,9 +135,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",            # base_dir : 최상의 폴더 안에있는 static 파일을 찾아 경로로 들인다는 말임
 ]           # 정적파일 관련한 값이므로 여기다가 django static 에 들어가 복사한걸 붙여놓ㅇㅁ
+
+
+
+MEDIA_URL = '/media/'
+# media 경로로 왔을 때 저장이되도록
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
