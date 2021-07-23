@@ -9,6 +9,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from popo.decorators import account_ownership_required
 from popo.forms import AccountCreationForm
 from popo.models import NewModel
 
@@ -82,8 +83,18 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
     # 상세정보를 할때 어떤 걸로 랜더링할지
 
-@method_decorator(login_required, 'get')    # get 메서드에 해주겟다는 말
-@method_decorator(login_required, 'post')   # post 메서드에 해주겟다는 말
+has_ownership =[login_required, account_ownership_required]
+# 이렇게 할 시 4줄 말고 2줄로 줄일 수 있음
+# 4 줄로 할 시
+# @method_decorator(login_required, 'get')
+# @method_decorator(login_required, 'post')
+# @method_decorator(account_ownership_required, 'get')
+# @method_decorator(account_ownership_required, 'post')
+
+
+
+@method_decorator(has_ownership, 'get')    # get 메서드에 해주겟다는 말
+@method_decorator(has_ownership, 'post')   # post 메서드에 해주겟다는 말
 # 이거 쓰면 함수쓰고 로그인 여부만 확인
 class AccountUpdateView(UpdateView):
     model = User
@@ -96,9 +107,8 @@ class AccountUpdateView(UpdateView):
     # 어떤 경로의 html 을 쓸건지
 
 
-
-@method_decorator(login_required, 'get')        # get 메서드에 해주겟다는말
-@method_decorator(login_required, 'post')
+@method_decorator(has_ownership, 'get')        # get 메서드에 해주겟다는말
+@method_decorator(has_ownership, 'post')
 # 이거 쓰면 함수쓰고 로그인 여부만 확인
 class AccountDeleteView(DeleteView):
     model = User
