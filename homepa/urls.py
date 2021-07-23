@@ -18,6 +18,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accountss/', include('popo.urls'))
+# 장고가 기본적으로 준 주소 (관리자 페이지)
+    path('accountss/', include('popo.urls')),
+#path = 장고에서 제공하는 기능 , 경로를 accounts
+    path('profiles/', include('profileapp.url')),
+    # profiles 로가는 겨올를 설정
 ]
-#  includ(appname:)
+# path(내가만들 경로 이름, include(include(appname.url))
