@@ -5,7 +5,7 @@ from django.db import models
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE,
-                                related_name= 'profile')
+                                related_name='profile')
     # OneToOneField :  accountapp 과 1대 1로 작성
     #   User : 유저 클래스를 상속받음
     # on_delete :  계정이 탈퇴 시 삭제가 될 시 어떻게생성할 시
