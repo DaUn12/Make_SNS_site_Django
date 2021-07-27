@@ -20,3 +20,10 @@
     max-width: 500px;
 
 }
+.profile_image{
+    height: 12rem;
+    width : 12rem;
+    border-radius: 20rem;
+    object-fit: cover;
+    /*  이미지가 왜곡되지 않은상태에서 볼 수 있음   */
+}
