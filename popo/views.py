@@ -105,8 +105,9 @@ class AccountUpdateView(UpdateView):
     template_name = 'accountapp/update.html'
 
     def get_success_url(self):
-        return reverse('popo:detail', kwargs={'pk': self.object.user.pk})
-
+        return reverse('popo:detail', kwargs={'pk': self.object.pk})
+        # popo 자체가 계정앱이기때문에 user를 쓸 필요가 없음
+        # object = target_user 이므로
     # 어떤 경로의 html 을 쓸건지
 
 

@@ -38,6 +38,8 @@ class ProfileCreateView(CreateView):
     def get_success_url(self):
          return reverse('popo:detail', kwargs={'pk': self.object.user.pk})
 
+
+
 @method_decorator(profile_ownership_required, 'get')
 @method_decorator(profile_ownership_required, 'post')
 class ProfileUpdateView(UpdateView):
@@ -50,3 +52,5 @@ class ProfileUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('popo:detail', kwargs={'pk': self.object.user.pk})
 
+  # self.object : target_profile 이다. 이것은 Profile 이라는 클래스 안에
+  # user 가 있기 때문에 self.object.user.pk  를 써야함
