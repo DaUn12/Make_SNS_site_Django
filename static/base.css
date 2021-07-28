@@ -27,3 +27,7 @@
     object-fit: cover;
     /*  이미지가 왜곡되지 않은상태에서 볼 수 있음   */
 }
+.NNS_B{
+    font-family: "NanumSquareB", cursive;
+/*   나눔체로 쓰고 안될시  cursive 로 씀*/
+}
