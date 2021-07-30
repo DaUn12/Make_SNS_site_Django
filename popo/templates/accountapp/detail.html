@@ -42,21 +42,21 @@
             {% endif %}
             <h4> {{ target_user.username }}</h4>    {#보고자하는 계정의 아이디를 보고싶음#}
         </div>
-        <div>
-            {{ target_user.date_joined }}   {# date_joined : 언제 가입했는지 #}
-        </div>
+{#        <div>#}
+{#            {{ target_user.date_joined }}   {# date_joined : 언제 가입했는지 #}
+{#        </div>#}
 
         {% if user == target_user %}
 
         <div>
-            <a href="{% url 'popo:update' pk=target_user.pk %}">
-                Update.Info
+            <a href="{% url 'popo:update' pk=target_user.pk %}"
+            class="material-icons round_button mx-1">
+                settings
             </a>
-        </div>
-
-        <div>
-            <a href="{% url 'popo:delete' pk=target_user.pk %}">
-                Quit
+            
+            <a href="{% url 'popo:delete' pk=target_user.pk %}"
+                class="material-icons round_button mx-1">
+                close
             </a>
         </div>
         {% endif %}
