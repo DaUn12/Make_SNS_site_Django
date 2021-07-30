@@ -31,3 +31,20 @@
     font-family: "NanumSquareB", cursive;
 /*   나눔체로 쓰고 안될시  cursive 로 씀*/
 }
+
+.round_button{
+    color : black;
+    text-decoration:  none;
+/* 수정칸의 _ 을 제거해주기기*/
+    box-shadow: 0 0 3px black;
+/*  그림자 넣어주기 : (0 0 -x , y축의 그림자 넣어주기, 3px : 그림자의 크기, 그림자 색깔)  */
+    border-radius: 20rem;
+/*   모서리 동그랗게 하기*/
+    padding: 0.3rem;
+/*    페딩주기 */
+}
+
+/* 마우스에 갖다 댈 시 색 설정*/
+.round_button:hover{
+    color :dimgrey;
+}
