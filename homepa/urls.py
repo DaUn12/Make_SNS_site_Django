@@ -18,12 +18,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-urlpatterns = [
+    urlpatterns = [
     path('admin/', admin.site.urls),
 # 장고가 기본적으로 준 주소 (관리자 페이지)
     path('accountss/', include('popo.urls')),
 #path = 장고에서 제공하는 기능 , 경로를 accounts
     path('profiles/', include('profileapp.urls')),
     # profiles 로가는 겨올를 설정
+    path('articles/', include('articleapp.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 # path(내가만들 경로 이름, include(include(appname.url))

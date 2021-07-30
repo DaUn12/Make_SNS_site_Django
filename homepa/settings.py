@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'popo',
     'bootstrap4',
     'profileapp',
+    'articleapp',
 ]
 
 MIDDLEWARE = [
