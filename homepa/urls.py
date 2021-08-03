@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-    urlpatterns = [
+urlpatterns = [
     path('admin/', admin.site.urls),
 # 장고가 기본적으로 준 주소 (관리자 페이지)
     path('accountss/', include('popo.urls')),
