@@ -286,3 +286,16 @@ let magicGrid = new MagicGrid({
 
 magicGrid.listen();
 
+var masonrys = document.getElementsByTagName("img")
+//document : 문서 전ㅊㅔ  ,,, getElementsByTagName : 태그이름이르 찾기
+
+for( let i=0; masonrys.length; i++ ) {
+  masonrys[i].addEventListener('load',  function (){
+    magicGrid.positionItems();
+    }
+  , false)
+//  어떤이벤트가 발생하는지 감시
+
+
+}
+
