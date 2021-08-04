@@ -17,11 +17,19 @@
                  {# alt : 옆에 실행이 안되었을 경우 대체 할 것 #}
             {{ target_article.content }}
 
-
+            <div>
+                <a href="{% url 'articleapp:update' pk=target_article.pk %}"
+                   class="btn btn-success round-pill px-5">
+                    Update
+                    {# update  버튼을 만들어주기위해 #}
+                </a>
+                <a href="{% url 'articleapp:delete' pk=target_article.pk %}"
+                   class="btn btn-danger round-pill px-5">
+                    Delete
+                    {# update  버튼을 만들어주기위해 #}
+                </a>
+            </div>
         </div>
-
-
-
     </div>
 
 
