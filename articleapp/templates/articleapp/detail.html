@@ -4,19 +4,27 @@
 
 {% block content %}
 
-    <div>
-        <div>
+    <div class="container text-center">
+        <div class="my-5">
                {# 게시글 제목, 글쓴이 , 작성일자 #}
-            <h1> {{ target_article.title }}</h1>
+            <h1 class="NNS_B"> {{ target_article.title }}</h1>
             <h4> {{ target_article.writer.profile.nickname }}</h4>
             <p> {{ target_article.created_at }}</p>
         </div>
-        <div>
-            {#  게시글 대표이미지, 글 내용 #}
-            <img src="{{ target_article.image.url }}" alt="">
-                 {# alt : 옆에 실행이 안되었을 경우 대체 할 것 #}
-            {{ target_article.content }}
 
+        <hr>    {#  구분선 그리기 #}
+
+        <div class="my-5">
+            {#  게시글 대표이미지, 글 내용 #}
+            <img src="{{ target_article.image.url }}"
+                 class="article_image"  alt="">
+                 {# alt : 옆에 실행이 안되었을 경우 대체 할 것 #}
+
+            <div class="my-5 article_content">
+                {{ target_article.content }}
+            </div>
+
+            {% if target_article.writer == user %}
             <div>
                 <a href="{% url 'articleapp:update' pk=target_article.pk %}"
                    class="btn btn-success round-pill px-5">
@@ -29,6 +37,12 @@
                     {# update  버튼을 만들어주기위해 #}
                 </a>
             </div>
+            {% endif %}
+        </div>
+          <hr>
+        <div>
+            {# 댓글 내옹, 작성란 #}
+
         </div>
     </div>
 
