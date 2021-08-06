@@ -1,0 +1,26 @@
+ <div class="text-center my-5">
+    <div>
+    {# 이전페이지 만들기 #}
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}"
+            class="btn btn-secondary rounded-pill">
+            {# 현재페이지 외 색을 회색으로 바꿈 #}
+                {{ page_obj.previous_page_number }}
+            </a>
+        {%  endif %}
+    
+    {# 현재페이지 만들기 #}
+        <a href="#"
+        class="btn btn-dark rounded-pill">
+            {{ page_obj.number }}
+        </a>
+    
+    {# 다음페이지 만들기 #}
+        {% if page_obj.has_next %}
+            <a href="?page={{  page_obj.next_page_number }}"
+               class="btn btn-secondary rounded-pill">
+             {# ? : get방식으로 보내기, 다음페이지로감 #}
+                {{ page_obj.next_page_number }}
+            </a>
+        {% endif %}
+    </div>
