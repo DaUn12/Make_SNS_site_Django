@@ -13,10 +13,11 @@ from popo.decorators import account_ownership_required
 from popo.forms import AccountCreationForm
 from popo.models import NewModel
 
-# (login_url= reverse_lazy('accountapp:login'))
+# (login_url= reverse_lazy('popo:login'))
 # login_url 에 직접적인 주소가 아닌 reverse_lazy로 역추적해서 하면됨
-@login_required
-# 이거 쓰면 자동적으로 인증과정 됨
+@login_required(login_url=reverse_lazy('popo:login'))
+# 기본적으로 장고가 제공하는 건 accounts 인데 그 외일 경우 login_url=reverse_lazy('popo:login')라고 쳐줘야함
+# 로그인을 확인하고 이거 쓰면 자동적으로 인증과정 됨
 def hello_world(request):
 
     if request.method =='POST':
