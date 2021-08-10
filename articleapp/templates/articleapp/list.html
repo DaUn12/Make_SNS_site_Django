@@ -48,4 +48,20 @@
 
     {% include 'snippet/pagination.html' %}
 
+    <div class="text-center my-5">
+        <a href="{% url 'articleapp:create' %}"
+            class="btn btn-dark rounded-pill material-icons">
+            {#  px-5 : 글씨를 좌우여백 조정 #}
+            {# material-icons : 아이콘 만들기 #}
+            brush
+        </a>
+
+        <a href="{% url 'articleapp:create' %}"
+            class="btn btn-outline-dark rounded-pill px-5">
+            {#  px-5 : 글씨를 좌우여백 조정 #}
+            Create Article
+        </a>
+
+
+    </div>
 {% endblock %}

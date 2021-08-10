@@ -26,5 +26,7 @@ urlpatterns = [
     path('profiles/', include('profileapp.urls')),
     # profiles 로가는 겨올를 설정
     path('articles/', include('articleapp.urls')),
+    path('comments/', include('commentapp.urls')),
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 # path(내가만들 경로 이름, include(include(appname.url))

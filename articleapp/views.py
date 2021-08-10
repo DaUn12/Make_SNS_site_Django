@@ -10,9 +10,14 @@ from articleapp.decorators import article_ownership_required
 from articleapp.forms import ArticleCreationForm
 from articleapp.models import Article
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+@method_decorator(login_required(login_url=reverse_lazy('popo:login')), 'get')
+@method_decorator(login_required(login_url=reverse_lazy('popo:login')), 'post')
+
+# login_required(login_url=reverse_lazy('popo:login') 하는 이유
+# : 이게 없으면 기본적으로 장고에서 주는 주소가 accounts/app 이므로 내껀 accountss 이므로 login_url을 바꿔주는 코드를 써야함
+
 class ArticleCreateView(CreateView):
+
     model = Article
     form_class = ArticleCreationForm
     template_name = 'articleapp/create.html'
