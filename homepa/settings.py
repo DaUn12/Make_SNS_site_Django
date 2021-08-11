@@ -39,7 +39,7 @@ SECRET_KEY = 'django-insecure-z!wute_#a%5cmq6lu^6=33e^)=6zq)cuv3l_vasd4ja!2ow288
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]       # 모든 호스트를 허용
 
 
 # Application definition
