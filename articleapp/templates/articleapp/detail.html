@@ -42,6 +42,32 @@
           <hr>
         <div class="text-center my-4">
             {# 댓글 내옹, 작성란 #}
+            {% for comment in target_article.comment.all %}
+        {# target_article.comment : models.py 에서 외래키로(related name) 만든 이름임(comment)  #}
+        {# all : comment 를 모두 가져오기 위함 #}
+                <div class="comment_box">
+                    <div>
+                        {# 유저의 닉네임, 시간정보 #} {# 유저 이름만 폰트체조금 크게 하기 #}
+                        <span class="NNS_B" style="font-size: 1.3rem;">
+                            {{ comment.writer.profile.nickname }}</span>
+
+                        <span>{{ comment.create_at }}</span>
+                    </div>
+                    <div>
+                        {# 댓글 내용 #}
+                        <p>{{ comment.content }}</p>{# p : 글을만들어줄때의 태그 #}
+                    </div>
+                    {% if comment.writer == user %}
+                    <div style="text-align: right">
+                        <a href="{% url 'commentapp:delete' pk=comment.pk %}"
+                        class="btn btn-danger rounded-pill px-5">
+                            Delete
+                        </a>
+                    </div>
+                    {% endif %}  {# 로그아웃상태일 시 안나오도록 함 #}
+                </div>
+
+            {%  endfor %}
             {% include 'commentapp/create.html' %}
 
         </div>

@@ -59,3 +59,11 @@
     box-shadow: 0 0 1rem green;
 /*   그림자 넣기 */
 }
+.comment_box {
+    text-align: left;
+    border: solid; /* 실선 */
+    border-color: #e8d3d3;
+    border-radius: 1rem;
+    padding: 1rem;/* 내부여백 */
+    margin: 1rem;
+}
