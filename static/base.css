@@ -67,3 +67,11 @@
     padding: 1rem;/* 내부여백 */
     margin: 1rem;
 }
+
+@media screen and (max-width: 500px){
+    html {
+        /* default font-size = 16px*/
+        font-size: 13px;
+    }
+}
+/* 최대너비가 500 안으로 될 시 안에 있는 서식을 사용 넘을 시 안보이게*/
