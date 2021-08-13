@@ -279,7 +279,7 @@ MagicGrid.prototype.listen = function listen () {
 let magicGrid = new MagicGrid({
   container: '.container',
   animate: true,
-  gutter: 30,
+  gutter: 12,       // 마진 사이 거리
   static: true,
   useMin: true
 });
