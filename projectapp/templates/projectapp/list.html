@@ -9,26 +9,25 @@
         .container{
             padding: 0;
             margin: 0 auto; {# 상하 : 0 , 좌우 : auto #}
-
         }
+
         .container div {
-          width: 45%;
-            max-width: 200px;
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: 1rem;
             flex-direction: column;
         {# 아래쪽으로 밑에 제목이 나오도록 // 기본값은 오른쪽임(행 = row )   #}
-            box-shadow: 0 0 1rem blueviolet;
+        {# 그림자 넣기 :    box-shadow: 0 0 1rem blueviolet;#}
         }
+
         .container img{
-            width: 100%;
+            width: 7rem;
+            height: 7rem;
+            object-fit: cover;      {# 외곡없는 이미지를 출력할 수 있음 #}
             border-radius: 1rem;
         }
-
     </style>
-
 
     <div class="container my-4">
       {% for project in project_list %}
@@ -36,24 +35,16 @@
             <a href="{%  url 'projectapp:detail' pk=project.pk%}">
                 <img src="{{ project.image.url }}" alt="">
             </a>
-          <span class="my-2 NNS_B">{{ project.name }}</span>
-
+          <span class="my-2 NNS_B">{{ project.name | truncatechars:10 }}</span>
+              {# 게시판이름 #}                   {# truncatechars 바이트수 절삭 #}
           </div>
-
-
-
-
        {% endfor %}
     </div>
-
-
-
     </div>
+
     <script src="{% static 'js/magicgrid.js' %}">    </script>
 {# static 안에 있는 자바스크립트 파일 호출 시 #}
-
     {% include 'snippet/pagination.html' %}
-
     <div class="text-center my-5">
         <a href="{% url 'projectapp:create' %}"
             class="btn btn-outline-dark rounded-pill px-5">
