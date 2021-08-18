@@ -9,3 +9,6 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project/', null=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.name}'       # 게시판의 이름으로 바꿔 주기
