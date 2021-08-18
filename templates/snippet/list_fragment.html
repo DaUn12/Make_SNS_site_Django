@@ -1,0 +1,69 @@
+
+{% load static %}
+{# static 불러온다는 문구#}
+
+    <style>
+        .container{
+            padding: 0;
+            margin: 0 auto; {# 상하 : 0 , 좌우 : auto #}
+
+        }
+        .container div {
+          width: 45%;
+            max-width: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 1rem;
+            flex-direction: column;
+        {# 아래쪽으로 밑에 제목이 나오도록 // 기본값은 오른쪽임(행 = row )   #}
+            box-shadow: 0 0 1rem blueviolet;
+        }
+        .container img{
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+    </style>
+
+
+    <div class="container my-4">
+      {% for article in article_list %}
+          <div>
+            <a href="{%  url 'articleapp:detail' pk=article.pk%}">
+                <img src="{{ article.image.url }}" alt="">
+            </a>
+          <span class="my-2 NNS_B">{{ article.title }}</span>
+
+          </div>
+
+
+
+
+       {% endfor %}
+    </div>
+
+
+
+    </div>
+    <script src="{% static 'js/magicgrid.js' %}">    </script>
+{# static 안에 있는 자바스크립트 파일 호출 시 #}
+
+    {% include 'snippet/pagination.html' %}
+
+    <div class="text-center my-5">
+        <a href="{% url 'articleapp:create' %}"
+            class="btn btn-dark rounded-pill material-icons">
+            {#  px-5 : 글씨를 좌우여백 조정 #}
+            {# material-icons : 아이콘 만들기 #}
+            brush
+        </a>
+
+        <a href="{% url 'articleapp:create' %}"
+            class="btn btn-outline-dark rounded-pill px-5">
+            {#  px-5 : 글씨를 좌우여백 조정 #}
+            Create Article
+        </a>
+
+
+    </div>
