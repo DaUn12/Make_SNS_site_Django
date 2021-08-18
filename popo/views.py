@@ -8,7 +8,9 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 
+from articleapp.models import Article
 from popo.decorators import account_ownership_required
 from popo.forms import AccountCreationForm
 from popo.models import NewModel
@@ -76,13 +78,19 @@ class AccountCreateView(CreateView):
     template_name = 'accountapp/create.html'
     # 여기로 저장한 다는 뜻임 ( 경로 )
 
-class AccountDetailView(DetailView):
+class AccountDetailView(DetailView, MultipleObjectMixin):
     # 장고의 디테일 뷰를 상속받는 클래스를 생성
     model = User
     context_object_name = 'target_user'
     # 상세 계정을 뽑아낼 변수를 추출
     template_name = 'accountapp/detail.html'
     # 상세정보를 할때 어떤 걸로 랜더링할지
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        article_list = Article.objects.filter(writer=self.object)
+                                                # writer=self.object => target user가 됨
+        return super().get_context_data(object_list=article_list, **kwargs)
 
 has_ownership =[login_required, account_ownership_required]
 # 이렇게 할 시 4줄 말고 2줄로 줄일 수 있음
