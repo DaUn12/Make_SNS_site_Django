@@ -23,13 +23,21 @@
         </div>
     </div>
 
+    {% if user.is_authenticated %}
     <div class="text-center">
+        {% if not subscription %}
         <a href="{% url 'subscribeapp:subscribe' project_pk=target_project.pk %}"
         class="btn btn-primary rounded-pill px-5">   {# 버튼누를시 가는 경로 #}
             Subscribe
         </a>
+        {% else %}
+        <a href="{% url 'subscribeapp:subscribe' project_pk=target_project.pk %}"
+        class="btn btn-secondary rounded-pill px-5">   {# 버튼누를시 가는 경로 #}
+            UnSubscribe
+        </a>
+        {% endif %}
     </div>
-
+    {% endif %}
     <div>
         {% include 'snippet/list_fragment.html' with article_list=object_list %}
                 {#이 경로로 저장되게끔  #}
