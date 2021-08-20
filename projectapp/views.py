@@ -51,6 +51,7 @@ class ProjectDetailView(DetailView, MultipleObjectMixin):
                                         **kwargs)
                         # object_list : 장고에서 지원해주는것
 
+
 class ProjectListView(ListView):
     model = Project
     context_object_name = 'project_list'
