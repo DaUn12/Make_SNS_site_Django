@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import request, HttpResponseRedirect
 from django.shortcuts import render
@@ -22,15 +23,27 @@ class LikeArticleView(RedirectView):        # 실행후 다시 돌아가야하�
 
         like_record = LikeRecord.objects.filter(user=user, article=article)
 
-        if like_record.exists():     # 좋아요 기록이 있으면 그냥 그 게시물로 다시 되돌아감
+        if like_record.exists():
+            # 좋아요 기록이 있으면 그냥 그 게시물로 다시 되돌아감
+            # 좋아요 반영 X 는 메세지 보냄
+            messages.add_message(request, messages.ERROR, '좋아요는 한번만가능합니다.')
             return HttpResponseRedirect(reverse('articleapp:detail',
                                                 kwargs={'pk':kwargs['article_pk']}))
 
         else:
+            # 좋아요가 반영되는 부분
+            # n = LikeRecord()
+            # n.user = user
+            # n.article = article
+            # n.save() 의 4줄을 한줄로 함축시켜놓음
             LikeRecord(user=user, article=article).save()
+            # DB에 입력
 
         article.like += 1
         article.save()
+
+        messages.add_message(request, messages.SUCCESS, '좋아요가 반영되었습니다')
+
         return super().get(request, *args, **kwargs)
 
     # 실행 시 어디로 갈건지
