@@ -25,3 +25,5 @@ class Article(models.Model):
     created_at = models.DateField(auto_now_add=True, null=True)
     # DateField : 언제작성했는지 알 수 있음
     # auto_now_add : 자동으로 시간을 작성해줌줌
+
+    like = models.IntegerField(default=0)
