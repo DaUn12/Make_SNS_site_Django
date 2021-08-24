@@ -75,3 +75,15 @@
     }
 }
 /* 최대너비가 500 안으로 될 시 안에 있는 서식을 사용 넘을 시 안보이게*/
+
+
+a{
+    text-decoration: none;
+    color : black;
+
+}
+
+/*마우스 올렸을때ㅔ*/
+a:hover{
+    color: black;
+}
