@@ -34,7 +34,6 @@ def db_transaction(user, article):
 
 
 
-
 @method_decorator(login_required, 'get')
 class LikeArticleView(RedirectView):        # 실행후 다시 돌아가야하기때문에 RedirectView
 
