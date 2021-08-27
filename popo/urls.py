@@ -2,13 +2,11 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from django.views.generic import DetailView
 
-from popo.views import hello_world, AccountCreateView, AccountDetailView, AccountUpdateView, AccountDeleteView
+from popo.views import  AccountCreateView, AccountDetailView, AccountUpdateView, AccountDeleteView
 
 app_name = 'popo'
 
 urlpatterns = [
-    path('hello_world/', hello_world, name='hello_world'),
-
     path('logout/', LogoutView.as_view(), name='logout'),
     path('create/', AccountCreateView.as_view(), name='create'),
     #path ( 라우팅할 경로, 함수이름(클래스 시 : 클래스.as_view), 사용할 이름)

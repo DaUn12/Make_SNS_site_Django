@@ -168,5 +168,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # lazy( appname : 우리가 설정한 이름)
-LOGIN_REDIRECT_URL = reverse_lazy('popo:hello_world')   # 로그인 재연결
+LOGIN_REDIRECT_URL = reverse_lazy('articleapp:list')   # 로그인 재연결
 LOGOUT_REDIRECT_URL =reverse_lazy('popo:login')
