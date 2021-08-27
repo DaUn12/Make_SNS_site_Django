@@ -18,7 +18,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from articleapp.views import ArticleListView
+
 urlpatterns = [
+    # 아무것도 경로를 안줬을 시
+    path('', ArticleListView.as_view(), name='home'),
     path('admin/', admin.site.urls),
 # 장고가 기본적으로 준 주소 (관리자 페이지)
     path('accountss/', include('popo.urls')),

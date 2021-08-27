@@ -13,8 +13,8 @@ class Article(models.Model):
         # null 값도 ok 하다는 것임
 
     project = models.ForeignKey(Project, on_delete=models.SET_NULL,
-                                related_name='article', null=True)
-
+                                related_name='article', null=True, blank=True)
+                                                                # blank=True : 입력안해도 작성가능
     title = models.CharField(max_length=200, null=True)
     image =models.ImageField(upload_to='article/', null=True)
     # media 파일 안에 article 이라는 폴더가 생기고 그 안에 사진이 자동으로 업로드됨
