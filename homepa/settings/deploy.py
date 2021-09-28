@@ -1,25 +1,14 @@
 from .base import *
-    # base 에있는 모든 걸 가져옴
 
-
-env_list =dict()
-local_env = open(os.path.join(BASE_DIR, '.env'), encoding='utf-8')      #os.path.join : os의 경로(settings의 파일과 .env 파일의 경로)를 합침
-
-while True:
-    line = local_env.readline()
-    if not line:
-        break
-    line = line.replace('\n','')
-    start = line.find('=')
-    key = line[:start]
-    value = line[start+1:]
-    env_list[key] = value
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+def read_secret(secret_name):
+    file = open('/run/secrets/'+ secret_name)   # 경로에있는 시크릿키를 읽을 수 있음
+    secret = file.read()
+    secret = secret.lstrip().rstrip()   # 좌우 공백제거
+    file.close()
+    return secret
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z!wute_#a%5cmq6lu^6=33e^)=6zq)cuv3l_vasd4ja!2ow288'
+SECRET_KEY = read_secret('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -35,8 +24,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': 'password1234',
+        'USER': read_secret('MARIADB_USER'),
+        'PASSWORD': read_secret('MARIADB_PASSWORD'),
         'HOST': 'mariadb',
         'PORT': '3306',
     }
