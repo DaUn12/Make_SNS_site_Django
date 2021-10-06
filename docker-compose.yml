@@ -4,7 +4,11 @@ services: # 하나로 묶어주는 서비스를 만듬
   nginx:    # nginx 컨테이너 부분
     image: nginx:1.19.5
     ports:
-      - 80:80
+      - mode: host
+        target: 80
+        published: 80
+        protocol: tcp
+
     networks:
       - gis_4ban_network
 
@@ -12,6 +16,7 @@ services: # 하나로 묶어주는 서비스를 만듬
       - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
       - gis_4ban_static:/data/static/
       - gis_4ban_media:/data/media/
+      - gis_log:/var/log/nginx/
 
   mariadb:
     image: mariadb:10.5
@@ -53,6 +58,7 @@ volumes:
   gis_4ban_static:
   gis_4ban_media:
   gis_mariadb:
+  gis_log:
 
 secrets:
   DJANGO_SECRET_KEY:
