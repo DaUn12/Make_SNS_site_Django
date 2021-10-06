@@ -17,6 +17,8 @@ services: # 하나로 묶어주는 서비스를 만듬
       - gis_4ban_static:/data/static/
       - gis_4ban_media:/data/media/
       - gis_log:/var/log/nginx/
+    secrets:
+      - NGINX_AUTH
 
   mariadb:
     image: mariadb:10.5
@@ -34,6 +36,14 @@ services: # 하나로 묶어주는 서비스를 만듬
       MARIADB_USER: /run/secrets/MARIADB_USER
       MARIADB_PASSWORD: /run/secrets/MARIADB_PASSWORD
       # 마리아디비 env 는 메인파일 - settings - deploy
+
+  goaccess:
+    image: allinurl/goaccess:1.5.1
+    ports:
+      - 7890:7890
+    volumes:
+      - gis_log:/var/log/nginx/
+    command: /var/log/nginx/gis_access.log -o /var/log/nginx/report.html --real-time-html --log-format COMBINED
 
 
   django:   # django 부분
@@ -69,3 +79,6 @@ secrets:
     external: true
   MARIADB_PASSWORD:
     external: true
+  NGINX_AUTH:
+    external: true
+
